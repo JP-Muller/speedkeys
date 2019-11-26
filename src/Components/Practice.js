@@ -1,67 +1,65 @@
-import React, {useEffect} from 'react'
-import Preview from './Preview'
-import getText from './getText'
-import Speed from './Speed'
+import React, { useEffect } from "react";
+import Preview from "./Preview";
+import getText from "./getText";
+import Speed from "./Speed";
 
+function Practice() {
+  const [text, setText] = React.useState(getText());
+  const [userInput, setUserInput] = React.useState("");
+  const [correctSymbols, setCorrectSymbols] = React.useState(0);
+  const [seconds, setSeconds] = React.useState(0);
+  const [started, setStart] = React.useState(false);
+  const [finished, setFinish] = React.useState(false);
 
-function Practice(){
+  useEffect(() => {
+    if (started && !finished) {
+      const interval = setInterval(() => {
+        return setSeconds(seconds => seconds + 1);
+      }, 1000);
+      return () => {
+        console.log("Cleared");
+        clearInterval(interval);
+      };
+    }
+  }, [started, finished]);
 
-    const [text, setText] = React.useState(getText());
-    const [userInput, setUserInput] = React.useState("");
-    const [correctSymbols, setCorrectSymbols] = React.useState(0);
-    const [seconds, setSeconds] = React.useState(0);
-    const [started, setStart] = React.useState(false);
-    const [finished, setFinish] = React.useState(false);
-  
-    useEffect(() => {
-      if (started && !finished) {
-        const interval = setInterval(() => {
-          return setSeconds(seconds => seconds + 1);
-        }, 1000);
-        return () => {
-          console.log("Cleared");
-          clearInterval(interval);
-        };
-      }
-    }, [started, finished]);
-  
-    function onRestart() {
-      setUserInput("");
-      setCorrectSymbols(0);
-      setSeconds(0);
-      setStart(false);
-      setFinish(false);
-    }
-  
-    function onUserInputChange(e) {
-      setTimer();
-      setUserInput(e);
-      stopTimer(e);
-      setCorrectSymbols(correctSymbolCount(e));
-    }
-  
-    function correctSymbolCount(userInput) {
-      const previewText = text.replace(" ", "");
-      return userInput
-        .replace(" ", "")
-        .split("")
-        .filter((symbol, i) => symbol === previewText[i]).length;
-    }
-  
-    function setTimer() {
-      if (!started) {
-        setStart(true);
-      }
-    }
-  
-    function stopTimer(userInput) {
-      if (userInput === text) {
-        setFinish(true);
-      }
-    }
+  function onRestart() {
+    setUserInput("");
+    setCorrectSymbols(0);
+    setSeconds(0);
+    setStart(false);
+    setFinish(false);
+  }
 
-    return (
-        <div className="container mt-5 mb-5">
+  function onUserInputChange(e) {
+    setTimer();
+    setUserInput(e);
+    stopTimer(e);
+    setCorrectSymbols(correctSymbolCount(e));
+  }
+
+  function correctSymbolCount(userInput) {
+    const previewText = text.replace(" ", "");
+    return userInput
+      .replace(" ", "")
+      .split("")
+      .filter((symbol, i) => symbol === previewText[i]).length;
+  }
+
+  function setTimer() {
+    if (!started) {
+      setStart(true);
+    }
+  }
+
+  function stopTimer(userInput) {
+    if (userInput === text) {
+      setFinish(true);
+    }
+  }
+
+  return (
+    <div className="container mt-5 mb-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <Preview text={text} userInput={userInput} />
@@ -87,7 +85,7 @@ function Practice(){
         </div>
       </div>
     </div>
-    )
+  );
 }
 
 export default Practice;
