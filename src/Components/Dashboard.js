@@ -4,7 +4,9 @@ function Dashboard(){
 
     return(
         <div>
-            Dashboard
+            <div>Dashboard</div>
+            <div>Solo Play Link</div>
+            <div>Multiplayer Queue</div>
         </div>
     )
 }
