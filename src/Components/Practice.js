@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Preview from "./Preview";
 import getText from "./getText";
 import Speed from "./Speed";
+import Keyboard from "./Keyboard/Keyboard";
 
 function Practice() {
   const [text, setText] = React.useState(getText());
@@ -10,6 +11,8 @@ function Practice() {
   const [seconds, setSeconds] = React.useState(0);
   const [started, setStart] = React.useState(false);
   const [finished, setFinish] = React.useState(false);
+  const [currentKeyCode, setKeyCode] = React.useState(null);
+  const [showKeyboard, toggleKeyboard] = React.useState(true);
 
   useEffect(() => {
     if (started && !finished) {
@@ -29,6 +32,7 @@ function Practice() {
     setSeconds(0);
     setStart(false);
     setFinish(false);
+    setKeyCode(null);
   }
 
   function onUserInputChange(e) {
@@ -58,6 +62,11 @@ function Practice() {
     }
   }
 
+  function keyHandler(e) {
+    setKeyCode(e.keyCode);
+    console.log(e);
+  }
+
   return (
     <div className="container mt-5 mb-5">
       <div className="row">
@@ -68,10 +77,17 @@ function Practice() {
             placeholder="Start Typing..."
             value={userInput}
             readOnly={finished}
+            onKeyDown={e => keyHandler(e)}
             onChange={e => onUserInputChange(e.target.value)}
           ></textarea>
           <Speed correctSymbols={correctSymbols} seconds={seconds} />
           <div className="text-right">
+          <button
+              className="btn btn-light mr-2"
+              onClick={() => toggleKeyboard(!showKeyboard)}
+            >
+              Toggle Keyboard
+            </button>
             <button
               className="btn btn-light mr-2"
               onClick={() => setText(getText())}
@@ -82,6 +98,7 @@ function Practice() {
               Restart
             </button>
           </div>
+          {showKeyboard ? <Keyboard currentKeyCode={currentKeyCode} /> : null}
         </div>
       </div>
     </div>

@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.keyboard-wrapper {
+  min-width: 1050px;
+  padding: 20px;
+  background: #1736;
+  border-radius: 10px;
+  border: 1.5px solid black;
+  display: grid;
+  grid-template-columns: repeat(30, 30px);
+  grid-template-rows: repeat(5, 45px);
+  grid-gap: 5px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  /* width: 50vw; */
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  grid-column: span 2;
+  font-size: 16px;
+  padding-top: 5px;
+  box-shadow: 1px 1px 1px 1px rgb(88, 88, 88);
+}
+
+@keyframes keyTap {
+    from {
+      background-color: rgb(233, 157, 157);
+      transform: translateY(0.8px) 0.2s;
+      transition: box-shadow ease-in-out 0.3s;
+      box-shadow: 2px 2px 2px 2px rgb(88, 88, 88);
+    }
+    to {
+      background-color: #fff;
+    }
+  }
+
+.activated {
+  animation: keyTap 0.5s;
+}
+
+.backspace {
+  grid-column: span 3;
+}
+
+.tab {
+  grid-column: span 2;
+}
+
+.backslash {
+  grid-column: span 3;
+}
+
+.capslock {
+  grid-column: span 3;
+}
+.enter {
+  grid-column: span 4;
+}
+.leftshift {
+  grid-column: span 4;
+}
+
+.rightshift {
+  grid-column: span 5;
+}
+.ctrl {
+  grid-column: span 3;
+}
+.windows {
+  grid-column: span 3;
+}
+.space {
+  grid-column: span 13;
+}
