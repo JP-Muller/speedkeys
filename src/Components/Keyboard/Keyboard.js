@@ -35,7 +35,7 @@ export default function Keyboard(props) {
         <div className={"key" + (currentKeyCode === 219 ? " activated" : " ")}>[</div>
         <div className={"key" + (currentKeyCode === 221 ? " activated" : " ")}>]</div>
         <div className={"key backslash" + (currentKeyCode === 220 ? " activated" : " ")}>\</div>
-        <div className={"key capslock" + (currentKeyCode === 20 ? " activated" : " ")}>CapsLock</div>
+        <div className={"key capslock" + (currentKeyCode === 20 ? " activated" : " ")}>Caps Lock</div>
         <div className={"key" + (currentKeyCode === 65 ? " activated" : " ")}>A</div>
         <div className={"key" + (currentKeyCode === 83 ? " activated" : " ")}>S</div>
         <div className={"key" + (currentKeyCode === 68 ? " activated" : " ")}>D</div>

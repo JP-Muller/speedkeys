@@ -68,12 +68,13 @@ function Practice() {
   }
 
   return (
-    <div className="container mt-5 mb-5">
+    <div className="mt-5 mb-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <Preview text={text} userInput={userInput} />
           <textarea
             className="form-control mb-3"
+            style={{minHeight: '60px'}}
             placeholder="Start Typing..."
             value={userInput}
             readOnly={finished}
