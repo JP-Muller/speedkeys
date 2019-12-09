@@ -4,14 +4,8 @@ import "./Keyboard.css";
 export default function Keyboard(props) {
   const { currentKeyCode } = props;
 
-  function handleKeyPress(e) {
-    if (e.keyCode === 13) {
-      console.log("yo");
-    } else console.log("Nahx");
-  }
-
   return (
-    <div className="center" onKeyDown={handleKeyPress}>
+    <div className="center">
       <div className="keyboard-wrapper">
         <div className={"key" + (currentKeyCode === 192 ? " activated" : " ")}>`</div>
         <div className={"key" + (currentKeyCode === 49 ? " activated" : " ")}>1</div>
