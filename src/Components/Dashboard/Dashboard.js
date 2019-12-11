@@ -4,7 +4,7 @@ import "./Dashboard.css";
 function Dashboard() {
   return (
     <div className="dash-container">
-      <header className='mt-2 mb-4'>
+      <header className='mt-3 mb-4'>
         <h1>SpeedKeys - Test your speed!</h1>
       </header>
       <div className="menu-link">
