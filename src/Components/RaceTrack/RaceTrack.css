@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.track-container {
+    height: 50px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.racer {
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+}
+.track {
+    background-color: lightgray;
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.start {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: red;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.finish {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: greenyellow;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}

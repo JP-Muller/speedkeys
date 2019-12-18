@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Preview from "./Preview";
+import RaceTrack from './RaceTrack/RaceTrack'
 import getText from "./getText";
 import Speed from "./Speed";
 import Keyboard from "./Keyboard/Keyboard";
@@ -13,6 +14,7 @@ function Practice() {
   const [finished, setFinish] = React.useState(false);
   const [currentKeyCode, setKeyCode] = React.useState(null);
   const [showKeyboard, toggleKeyboard] = React.useState(true);
+  const [percentComplete, setPercentage] = React.useState(0);
 
   useEffect(() => {
     if (started && !finished) {
@@ -33,6 +35,7 @@ function Practice() {
     setStart(false);
     setFinish(false);
     setKeyCode(null);
+    setPercentage(0);
   }
 
   function onUserInputChange(e) {
@@ -44,10 +47,24 @@ function Practice() {
 
   function correctSymbolCount(userInput) {
     const previewText = text.replace(" ", "");
+    percentCorrectCount(userInput, text)
     return userInput
       .replace(" ", "")
       .split("")
       .filter((symbol, i) => symbol === previewText[i]).length;
+  }
+
+  function percentCorrectCount(userInput, text) {
+      let equivalency = 0;
+      const minLength = (userInput.length > text.length) ? text.length : userInput.length;    
+      const maxLength = (userInput.length < text.length) ? text.length : userInput.length;    
+      for(var i = 0; i < minLength; i++) {
+          if(userInput[i] === text[i]) {
+              equivalency++;
+          }
+      }
+      const weight = equivalency / maxLength;
+      setPercentage(weight * 100)
   }
 
   function setTimer() {
@@ -71,6 +88,7 @@ function Practice() {
     <div className="mt-5 mb-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
+          <RaceTrack percentComplete={percentComplete} />
           <Preview text={text} userInput={userInput} />
           <textarea
             className="form-control mb-3"
