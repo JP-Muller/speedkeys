@@ -1,0 +1,24 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadein 1s;
+    /* margin-left: 15%;
+    margin-right: 15%; */
+}
+
+.info-button-container {
+    width: 55vw;
+    display: flex;
+    justify-content: space-between
+}
+
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

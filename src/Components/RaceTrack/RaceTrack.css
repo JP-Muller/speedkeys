@@ -6,8 +6,9 @@ body {
 
 .track-container {
     height: 50px;
+    width: 65vw;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .racer {

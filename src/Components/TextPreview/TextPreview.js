@@ -5,13 +5,12 @@ export default function Preview(props) {
   const userInput = props.userInput.split("");
 
   return (
-    <div className="border rounded p-3 mb-4">
+    <div className="border rounded p-3 mb-4" style={{minWidth: '60vw', maxWidth: '60vw'}}>
       {text.map((symbol, i) => {
           let color;
           if(i < userInput.length){
               color = symbol === userInput[i] ? '#dfffa0' : '#fcbea4'
           }
-
         return <span key={i} style={{backgroundColor: color}}>{symbol}</span>;
       })}
     </div>
