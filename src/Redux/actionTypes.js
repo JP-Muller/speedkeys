@@ -1,0 +1,5 @@
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const SINGUP = 'SIGNUP'
+export const GET_USER = 'GET_USER'
+export const GET_LEADERBOARDS = 'GET_LEADERBOARDS'
