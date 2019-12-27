@@ -8,7 +8,9 @@ function Login(props) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  function loginUser() {}
+  function loginUser() {
+    props.login(username, password);
+  }
 
   function handleKeyDown(e) {
     if (e.keyCode === 13) {
@@ -22,7 +24,7 @@ function Login(props) {
     <div className="parent-container">
       <form>
         <div className="container">
-          <label for="username">
+          <label>
             <b>Username:</b>
           </label>
           <input
@@ -34,7 +36,7 @@ function Login(props) {
             required
           />
 
-          <label for="password">
+          <label>
             <b>Password:</b>
           </label>
           <input
@@ -51,9 +53,10 @@ function Login(props) {
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
           </label>
+          <p>Not a member? <a href='#/register'>Sign up here</a></p>
         </div>
 
-        <div className="container" style={{ backgroundColor: "#f1f1f1" }}>
+        <div className="container" style={{ backgroundColor: "#f1f1f1"}}>
           <a href="/">
             <button type="button" className="cancel-button">
               Cancel

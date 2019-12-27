@@ -49,9 +49,44 @@ button:hover {
   background-color: #f44336;
 }
 
+.register-button{
+    width: 100%;
+    margin-bottom: 1px;
+}
+
+.cancel-register {
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    padding: 14px 0px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    border: none;
+}
+
 .password-recovery {
   display: block;
   float: right;
+}
+
+.field-icon{
+    float: right;
+    margin-left: -25px;
+    margin-top: 20px;
+    margin-right: 7px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.field-icon2{
+    float: right;
+    margin-left: -25px;
+    margin-top: 20px;
+    margin-right: 5px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
 }
 
 @keyframes fadein {

@@ -113,9 +113,6 @@ function Practice() {
 
   return (
     <div className="game-container mt-3">
-      {/* <RaceTrack percentComplete={percentComplete} />
-      <RaceTrack percentComplete={percentComplete} />
-      <RaceTrack percentComplete={percentComplete} /> */}
       <RaceTrack percentComplete={percentComplete} />
       <Preview text={text} userInput={userInput} />
       <textarea
