@@ -5,7 +5,7 @@ export default function Preview(props) {
   const userInput = props.userInput.split("");
 
   return (
-    <div className="border rounded p-3 mb-4" style={{minWidth: '60vw', maxWidth: '60vw', fontSize: '23px'}}>
+    <div className="border rounded p-3 mb-4" style={{minWidth: '60vw', maxWidth: '60vw', fontSize: '22px'}}>
       {text.map((symbol, i) => {
           let color;
           if(i < userInput.length){

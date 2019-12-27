@@ -129,6 +129,7 @@ function Practice() {
       ></textarea>
       <div className="info-button-container">
         <Speed correctSymbols={correctSymbols} seconds={seconds} />
+        {/* {percentComplete}% */}
         <div className="text-right">
           <button
             className="btn btn-light mr-2"

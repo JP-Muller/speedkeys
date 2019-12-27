@@ -1,0 +1,64 @@
+.parent-container{
+    width: 60vw;
+    height: 50vh;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    animation: fadein 1s;
+}
+
+form {
+  border: 3px solid #f1f1f1;
+}
+
+.container {
+  padding: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.login-button {
+    width: 100%;
+}
+
+.cancel-button {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.password-recovery {
+  display: block;
+  float: right;
+}
+
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

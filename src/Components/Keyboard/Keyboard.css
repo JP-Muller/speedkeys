@@ -14,6 +14,7 @@ body {
   grid-template-columns: repeat(30, 25px);
   grid-template-rows: repeat(5, 45px);
   grid-gap: 5px;
+  cursor: default;
 }
 
 @media (max-width: 900px) {
