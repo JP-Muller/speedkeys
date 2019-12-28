@@ -48,15 +48,19 @@ function Login(props) {
             required
           />
 
-          <button type="submit" className='login-button'>Login</button>
+          <button type="submit" className="login-button">
+            Login
+          </button>
           <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
           </label>
-          <p>Not a member? <a href='#/register'>Sign up here</a></p>
+          <p>
+            Not a member? <a href="#/register">Sign up here</a>
+          </p>
         </div>
 
-        <div className="container" style={{ backgroundColor: "#f1f1f1"}}>
+        <div className="container" style={{ backgroundColor: "#f1f1f1" }}>
           <a href="/">
             <button type="button" className="cancel-button">
               Cancel

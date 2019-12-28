@@ -6,6 +6,8 @@ import "./Auth.css";
 
 function Register(props) {
   const [email, setEmail] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [country, setCountry] = React.useState("");
@@ -29,6 +31,31 @@ function Register(props) {
     <div className="parent-container">
       <form>
         <div className="container">
+        <label>
+              <b>Name:</b>
+            </label>
+          <div className="first-last-name-container">
+            <div style={{width: '49%'}}>
+            <input
+              type="text"
+              name="firstName"
+              value={firstName}
+              placeholder="First name"
+              onChange={e => setFirstName(e.target.value)}
+              required
+            />
+            </div>
+            <div style={{width: '49%'}}>
+            <input
+              type="text"
+              name="lastName"
+              value={lastName}
+              placeholder="Last name (Optional)"
+              onChange={e => setLastName(e.target.value)}
+              required
+            />
+            </div>
+          </div>
           <label>
             <b>Email:</b>
           </label>
@@ -79,7 +106,13 @@ function Register(props) {
           <label>
             <b>Country:</b>
           </label>
-          <select id="country" name="country" className="form-control" onChange={e => setCountry(e.target.value)} required>
+          <select
+            id="country"
+            name="country"
+            className="form-control"
+            onChange={e => setCountry(e.target.value)}
+            required
+          >
             <option value="Afghanistan">Afghanistan</option>
             <option value="Åland Islands">Åland Islands</option>
             <option value="Albania">Albania</option>
@@ -378,8 +411,14 @@ function Register(props) {
             <option value="Zimbabwe">Zimbabwe</option>
           </select>
         </div>
-        <button type="submit" className='register-button'>Register</button>
-        <button type="button" className='cancel-register'>Cancel</button>
+        <button type="submit" className="register-button">
+          Register
+        </button>
+        <a href="/">
+          <button type="button" className="cancel-register">
+            Cancel
+          </button>
+        </a>
       </form>
     </div>
   );

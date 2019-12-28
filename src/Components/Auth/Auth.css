@@ -89,6 +89,12 @@ button:hover {
     cursor: pointer;
 }
 
+.first-last-name-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @keyframes fadein {
     from {
       opacity: 0;
