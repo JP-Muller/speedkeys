@@ -14,7 +14,7 @@ function Register(props) {
   const [passVisible, setVisiblePass] = React.useState(false);
   let { user } = props;
 
-  function registerUser() {
+  function registerUser(e) {
     let profilePic = `https://robohash.org/${username}`;
     props.signup(
       firstName,
@@ -25,6 +25,7 @@ function Register(props) {
       country,
       profilePic
     );
+    e.preventDefault()
   }
   function handleKeyDown(e) {
     if (e.keyCode === 13) {
@@ -422,7 +423,7 @@ function Register(props) {
         <button
           type="submit"
           className="register-button"
-          onClick={registerUser}
+          onClick={e => registerUser(e)}
         >
           Register
         </button>
