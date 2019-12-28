@@ -1,11 +1,15 @@
 import React from "react";
+import { logout } from "../Redux/Reducers/userReducer";
+import { connect } from "react-redux";
 
-export default function Navbar() {
+function Navbar(props) {
   const centerNavItem = {
     fontSize: "13px",
     display: "flex",
     justifyContent: "center"
   };
+  let { user } = props;
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light"
@@ -53,12 +57,19 @@ export default function Navbar() {
           <div>
             <ul className="navbar-nav my-2 my-lg-0">
               <div>
-                <li className="nav-item active mr-4">Guest</li>
-                <a href="#/login">
+                <li className="nav-item active mr-4">
+                  {user.loggedIn ? user.username : "Guest"}
+                </li>
+                {!user.loggedIn ? (<a href="#/login">
                   <li className="nav-item active mr-4" style={centerNavItem}>
-                    Login
+                   Login
                   </li>
-                </a>
+                </a>) : (<a href="#/" onClick={props.logout}>
+                  <li className="nav-item active mr-4" style={centerNavItem}>
+                   Logout
+                  </li>
+                </a>)}
+                
               </div>
               <div>
                 <li className="nav-item active mr-3">Skill</li>
@@ -85,3 +96,9 @@ export default function Navbar() {
     </nav>
   );
 }
+
+function mapStateToProps(state) {
+  return state.user;
+}
+
+export default connect(mapStateToProps, { logout })(Navbar);

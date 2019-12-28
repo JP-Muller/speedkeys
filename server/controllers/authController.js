@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypyt')
+const bcrypt = require('bcrypt')
 const saltRounds = 10
 
 module.exports = {
@@ -16,22 +16,28 @@ module.exports = {
                 username: existingUser.username,
                 country: existingUser.country,
                 profilePic: existingUser.profile_pic,
-                loggedIn: true,
+                loggedIn: true
             }
             console.log(req.session.user.username, 'logged in!')
             res.send(req.session.user)
         }else res.status(401).send('Username or password incorrect!')
     },
     async register(req, res) {
-        let {firstName, lastName, username, password, profilePic, country} = req.body;
+        let {firstName, lastName, username, password, email, country, profilePic} = req.body;
         const db = req.app.get('db');
+        console.log( firstName,
+            lastName,
+            username,
+            password,
+            profilePic,
+            country)
         let [existingUser] = await db.get_user_by_handle(username);
         if (existingUser) return res.status(400).send('Username is taken!');
         let salt = await bcrypt.genSalt(saltRounds);
         let hash = await bcrypt.hash(password, salt);
-        let [user] = await db.register_user([firstName, lastName, username, hash, profilePic, country]);
+        let [user] = await db.register_user([firstName, lastName, username, hash, email, country, profilePic]);
         req.session.user = {
-            id: existingUser.user_id,
+            id: user.user_id,
             firstName: user.first_name,
             lastName: user.last_name,
             username: user.username,
@@ -43,6 +49,7 @@ module.exports = {
         res.send(req.session.user)
     },
     logout(req, res){
+        console.log('Logged out!')
         req.session.destroy();
         res.sendStatus(200)
     },

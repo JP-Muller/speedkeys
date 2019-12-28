@@ -10,13 +10,21 @@ function Register(props) {
   const [lastName, setLastName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [country, setCountry] = React.useState("");
+  const [country, setCountry] = React.useState("Afghanistan");
   const [passVisible, setVisiblePass] = React.useState(false);
   let { user } = props;
 
   function registerUser() {
     let profilePic = `https://robohash.org/${username}`;
-    props.signup(username, password, country, profilePic);
+    props.signup(
+      firstName,
+      lastName,
+      username,
+      password,
+      email,
+      country,
+      profilePic
+    );
   }
   function handleKeyDown(e) {
     if (e.keyCode === 13) {
@@ -27,33 +35,33 @@ function Register(props) {
     setVisiblePass(!passVisible);
   }
 
+  if (user.loggedIn) return <Redirect to="/" />;
   return (
     <div className="parent-container">
       <form>
         <div className="container">
-        <label>
-              <b>Name:</b>
-            </label>
+          <label>
+            <b>Name:</b>
+          </label>
           <div className="first-last-name-container">
-            <div style={{width: '49%'}}>
-            <input
-              type="text"
-              name="firstName"
-              value={firstName}
-              placeholder="First name"
-              onChange={e => setFirstName(e.target.value)}
-              required
-            />
+            <div style={{ width: "49%" }}>
+              <input
+                type="text"
+                name="firstName"
+                value={firstName}
+                placeholder="First name"
+                onChange={e => setFirstName(e.target.value)}
+                required
+              />
             </div>
-            <div style={{width: '49%'}}>
-            <input
-              type="text"
-              name="lastName"
-              value={lastName}
-              placeholder="Last name (Optional)"
-              onChange={e => setLastName(e.target.value)}
-              required
-            />
+            <div style={{ width: "49%" }}>
+              <input
+                type="text"
+                name="lastName"
+                value={lastName}
+                placeholder="Last name (Optional)"
+                onChange={e => setLastName(e.target.value)}
+              />
             </div>
           </div>
           <label>
@@ -411,7 +419,11 @@ function Register(props) {
             <option value="Zimbabwe">Zimbabwe</option>
           </select>
         </div>
-        <button type="submit" className="register-button">
+        <button
+          type="submit"
+          className="register-button"
+          onClick={registerUser}
+        >
           Register
         </button>
         <a href="/">

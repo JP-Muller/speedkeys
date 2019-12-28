@@ -1,15 +1,16 @@
 import React from "react";
 import { login } from "../../Redux/Reducers/userReducer";
 import { connect } from "react-redux";
-import { redirect, Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import "./Auth.css";
 
 function Login(props) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  function loginUser() {
+  function loginUser(e) {
     props.login(username, password);
+    e.preventDefault()
   }
 
   function handleKeyDown(e) {
@@ -19,7 +20,7 @@ function Login(props) {
   }
 
   let { user } = props;
-
+  if (user.loggedIn) return <Redirect to="/" />;
   return (
     <div className="parent-container">
       <form>
@@ -29,7 +30,6 @@ function Login(props) {
           </label>
           <input
             type="text"
-            name="username"
             value={username}
             placeholder="Enter Username"
             onChange={e => setUsername(e.target.value)}
@@ -42,17 +42,16 @@ function Login(props) {
           <input
             type="password"
             placeholder="Enter Password"
-            name="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
           />
 
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" onClick={e => loginUser(e)}>
             Login
           </button>
           <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
+            <input type="checkbox" checked="checked" /> Remember
             me
           </label>
           <p>

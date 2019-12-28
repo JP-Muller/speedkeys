@@ -33,9 +33,9 @@ app.use(initSession)
 
 // Authentication Endpoints
 
-app.post('/api/login')
-app.post('/api/signup')
-app.get('/api/user', authCheck)
-app.delete('/api/logout')
+app.post('/api/login', ac.login)
+app.post('/api/signup', ac.register)
+app.get('/api/user', authCheck, ac.getUser)
+app.delete('/api/logout', ac.logout)
 app.put('/api/edit/:user_id')
 app.put('/api/editprofile_pic/:user_id')
