@@ -39,3 +39,28 @@ app.get('/api/user', authCheck, ac.getUser)
 app.delete('/api/logout', ac.logout)
 app.put('/api/edit/:user_id')
 app.put('/api/editprofile_pic/:user_id')
+
+
+//Sockets
+
+io.on("connection", socket => {
+    console.log("User Connected");
+
+    socket.on('join room', async data => {
+        let { lobby, lobbyName } = data
+        const db = app.get('db');
+        console.log("You just joined:", lobbyName);
+        let messages = await db.get_players(lobby);
+        // console.log('messages', messages);
+        socket.join(lobby);
+        io.to(lobby).emit('room joined', messages);
+
+    })
+
+
+
+    socket.on('disconnect', () => {
+        console.log('Disconnected from room');
+    });
+
+})
