@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Sprites() {
+export default function Sprite() {
     return (
         <div>
             
