@@ -6,6 +6,7 @@ const session = require('express-session')
 //require sockets
 const socket = require('socket.io')
 const ac = require('./controllers/authController')
+const sc = require('./controllers/scoreController')
 const initSession = require('./middleware/initSession')
 const authCheck = require('./middleware/authCheck')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
