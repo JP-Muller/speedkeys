@@ -1,4 +1,18 @@
-.dash-container {
+.dash-master{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
