@@ -1,20 +1,37 @@
 .dash-master{
-    height: 100%;
+    animation: fadein 1s;
     display: grid;
     grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 1fr 90%;
 }
 
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
 .main-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 .ad-column {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+}
+
+.ad-column img {
+    max-width: 310px;
+    max-height: 600px;
+    min-width: 250px;
+    min-height: 250px;
 }
